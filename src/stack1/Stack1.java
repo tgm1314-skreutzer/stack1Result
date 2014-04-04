@@ -1,5 +1,8 @@
 package stack1;
 
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 /**
  * Ein einfacher Stack (Stapel - wie ein Stapel Holz) von Objekten. 
@@ -57,4 +60,53 @@ public class Stack1 {
 		return tos >= os.length;
 	}
 
-}
+
+		public static int calc(int a,int b,char operatoren){
+			int result = 0;
+			switch(operatoren){
+			case'+':
+				result = a+b;
+			break;
+			case'-':
+				result = a-b;
+			break;
+			case'*':
+				result = a*b;
+			break;
+			case'/':
+				result = a/b;
+			break;
+			case'%':
+				result = a%b;
+			break;
+			default:
+				throw new RuntimeException("Invalid operator");
+			
+			}
+		return result;
+		}
+
+
+				@Test
+					public void test1(){
+						int rechnung = calc(25,5,'+');
+						if(rechnung != 30){
+							throw new RuntimeException("Falsch gerechnet");
+						}
+					}
+
+				@BeforeClass
+					static void beforeClassTest(){
+						System.out.println("Method beforeClassTest");
+					}
+				@AfterClass
+					static void afterClassTest(){
+						System.out.println("Method afterClassTest");
+					}
+				@Test(expected=RuntimeException.class)
+					public void testInvalid(){
+						calc(5, 10,'?');
+				}
+			
+		}
+
